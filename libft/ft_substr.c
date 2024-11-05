@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deabraha <deabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 18:50:17 by deabraha          #+#    #+#             */
-/*   Updated: 2024/11/05 14:35:13 by deabraha         ###   ########.fr       */
+/*   Created: 2024/11/05 14:02:34 by deabraha          #+#    #+#             */
+/*   Updated: 2024/11/05 14:50:36 by deabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	strlen;
-	char	*str;
+	char	*sub;
+	size_t	s_len;
+	size_t	size;
 
-	if (!s || !f)
-		return (NULL);
-	strlen = ft_strlen(s);
-	str = (char *)malloc((strlen + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (i < strlen)
+	s_len = ft_strlen(s);
+	if (!s)
+		return (0);
+	if (start > s_len)
 	{
-		str[i] = f(i, s[i]);
-		i++;
+		size = 1;
+		start = 0;
 	}
-	str[i] = '\0';
-	return (str);
+	else if ((s_len - start) < len)
+		size = s_len - start + 1;
+	else
+		size = len + 1;
+	sub = (char *)malloc(size * sizeof(char));
+	if (!sub)
+		return (0);
+	ft_strlcpy(sub, s + start, size);
+	return (sub);
 }

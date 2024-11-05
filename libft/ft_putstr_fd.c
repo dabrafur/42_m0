@@ -6,7 +6,7 @@
 /*   By: deabraha <deabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:56:26 by deabraha          #+#    #+#             */
-/*   Updated: 2024/11/04 20:51:06 by deabraha         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:39:48 by deabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
+	return ;
 }

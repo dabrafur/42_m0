@@ -6,29 +6,28 @@
 /*   By: deabraha <deabraha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:56:16 by deabraha          #+#    #+#             */
-/*   Updated: 2024/11/05 13:08:13 by deabraha         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:31:49 by deabraha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	w_count(const char *s, char c)
 {
 	int	count;
-	int	in_word;
+	int	isword;
 
 	count = 0;
-	in_word = 0;
+	isword = 0;
 	while (*s)
 	{
-		if (*s != c && !in_word)
+		if (*s != c && !isword)
 		{
-			in_word = 1;
+			isword = 1;
 			count++;
 		}
 		else if (*s == c)
-			in_word = 0;
+			isword = 0;
 		s++;
 	}
 	return (count);
@@ -82,7 +81,7 @@ static int	fill_split(char **split, const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	*split;
+	char	**split;
 	int		words;
 
 	if (!s)
