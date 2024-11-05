@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deabraha <deabraha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: deborafurlan <deborafurlan@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:34:41 by deabraha          #+#    #+#             */
-/*   Updated: 2024/11/04 20:33:57 by deabraha         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:32:45 by deborafurla      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	result;
+	int sign;
+	int result;
 
 	sign = 1;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+    result = 0;
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign = -1;
-		i++;
+		str++;
 	}
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(*str))
 	{
-		result = result * 10 + (str[i] - '0');
-		i++;
+		result = result * 10 + (*str - '0');
+		str++;
 	}
 	return (sign * result);
 }
